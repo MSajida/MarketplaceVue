@@ -136,7 +136,7 @@ export default ({
 
                         console.log(this.data)
                         this.Electronics = this.data.data
-                        this.Electronics.category= 'Electronics'
+                        this.category= 'Electronics'
 
                     }
                     else {

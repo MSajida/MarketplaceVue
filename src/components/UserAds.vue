@@ -66,6 +66,7 @@ export default {
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
+                        alert("Successfully deleted the product")
                         this.electronics();
                         console.log(JSON.stringify(this.data), "response after delete")
 
@@ -82,18 +83,22 @@ export default {
             }
             if(category=='clothing')
             {
+                window.sessionStorage.setItem("clothingId", id);
                 window.location.href="/#/UpdateClothing"
             }
             if(category=='household')
             {
+                window.sessionStorage.setItem("householdId", id);
                 window.location.href="/#/UpdateHousehold"
             }
             if(category=='automobiles')
             {
+                window.sessionStorage.setItem("automobileId", id);
                 window.location.href="/#/UpdateAutomobiles"
             }
             if(category=='miscellenous')
             {
+                window.sessionStorage.setItem("miscellenousId", id);
                 window.location.href="/#/UpdateOthers"
             }
             

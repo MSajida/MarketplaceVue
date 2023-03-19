@@ -7,8 +7,6 @@ import axios from "axios";
 import router from "./components/router"
 import VueSidebarMenuAkahon from "vue-sidebar-menu-akahon";
 import {v4 as uuidv4} from 'uuid';
-import { initializeApp } from 'firebase/app';
-import 'firebase/storage';
 import VueCarousel, { Slide } from 'vue-carousel';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -18,19 +16,9 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBj86JYFkwR1T-lxhWnwB509omm-7I5Dd4",
-  authDomain: "market-place-ae685.firebaseapp.com",
-  projectId: "market-place-ae685",
-  storageBucket: "market-place-ae685.appspot.com",
-  messagingSenderId: "1008378704426",
-  appId: "1:1008378704426:web:478dcda9d0aa1b012d4953"
-};
-
 library.add(faSpinner);
 library.add(fas);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
-initializeApp(firebaseConfig)
 Vue.component('vue-sidebar-menu-akahon', VueSidebarMenuAkahon);
 Vue.use(VueCarousel);
 Vue.component('slide', Slide);
