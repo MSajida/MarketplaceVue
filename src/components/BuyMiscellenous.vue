@@ -69,7 +69,7 @@ export default {
         async misc() {
             await this.$axios
                 .get(
-                    "http://localhost:8082/miscellenous/miscellenous"
+                    "http://100.26.237.1858082/miscellenous/miscellenous"
                 )
 
                 .then((res) => {
