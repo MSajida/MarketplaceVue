@@ -51,7 +51,7 @@ export default (
         console.log(this.login);
 
         await this.$axios
-          .post("http://localhost:8082/login", this.login)
+          .post("http://100.26.237.185:8082/login", this.login)
           .then((res) => {
             if (res.status == 200) {
               this.data = res;
