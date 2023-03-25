@@ -103,7 +103,8 @@ export default ({
                 price: "",
                 description:"",
                 images: "",
-                studentId:""
+                studentId:"",
+                status:""
             },
             imgArry: [],
         });
@@ -142,6 +143,7 @@ export default ({
 
         RegisterProduct(Clothing) {
             this.Clothing.studentId = (sessionStorage.getItem('user'));
+            this.Clothing.status='Available'
             console.log(this.Clothing, 'Clothing object');
             this.formdata.append('clothing', JSON.stringify(this.Clothing));
             this.$axios

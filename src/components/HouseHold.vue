@@ -101,7 +101,8 @@ export default ({
                 qtyAvailable: "",
                 description: "",
                 images: "",
-                studentId:""
+                studentId:"",
+                status:""
             },
             imgArry: [],
         });
@@ -140,6 +141,7 @@ export default ({
 
         RegisterProduct(HouseHold) {
             this.HouseHold.studentId= sessionStorage.getItem('user');
+            this.HouseHold.status= 'Available'
             this.formdata.append('household', JSON.stringify(this.HouseHold));
             this.$axios
                 .post("http://localhost:8082/household/addProduct", this.formdata)

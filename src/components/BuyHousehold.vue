@@ -17,10 +17,10 @@
                             </carousel>
 
                             <h5 class="card-title">{{ c.productName }}</h5>
-                            <p class="card-text">${{ c.price }}</p>
-                            <p class="card-text">{{ c.description }}</p>
-                            <p class="card-text">{{ c.daysUsed }} Days used</p>
-                            <p class="card-text">{{ c.qtyAvailable }} Available</p>
+                            <p class="card-text" style="color: blue">${{ c.price }}</p>
+                            <p class="card-text" style="color: rebeccapurple">{{ c.description }}</p>
+                            <p class="card-text" style="color: red">{{ c.daysUsed }} Days used</p>
+                            <p class="card-text" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
                             <br />
                         </div>
                     </div>
@@ -119,8 +119,8 @@ export default {
 }
 
 .a1 {
-    height: 550px;
-    width: 330px;
+    height: 500px;
+    width: 400px;
 
 }
 

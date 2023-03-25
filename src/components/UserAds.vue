@@ -10,9 +10,10 @@
                             <img :src="getimgURL(c)" class="img-radius" alt="User-Profile-Image" height="190" width="190"
                                 id="image1" />
                             <h5 class="card-title">{{ c.productName }}</h5>
-                            <p class="card-text">${{ c.price }}</p>
-                            <p class="card-text">{{ c.description }}</p>
-                            <p class="card-text">{{ c.qtyAvailable }} Available</p>
+                            <p class="card-text" style="color: blue">${{ c.price }}</p>
+                            <p class="card-text" style="color: rebeccapurple">{{ c.description }}</p>
+                            <p class="card-text" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
+                            <p class="card-text">Product is {{c.status}}</p>
                             <font-awesome-icon @click="update(c.id,c.category)" icon="edit" />
                             &nbsp;&nbsp;
                             <font-awesome-icon @click = "deleteAdd(c.id,c.category)" icon="trash" color="red" />
@@ -50,6 +51,7 @@ export default {
                 description: "",
                 images: [],
                 studentId: "",
+                status:""
             }
 
         });
@@ -79,27 +81,34 @@ export default {
             if(category=='electronics')
             {
               window.sessionStorage.setItem("electronicId", id);
-               window.location.href="/#/UpdateElectronics"
+               //window.location.href="/#/UpdateElectronics"
+               this.$router.push("/UpdateElectronics")
             }
             if(category=='clothing')
             {
                 window.sessionStorage.setItem("clothingId", id);
-                window.location.href="/#/UpdateClothing"
+                //window.location.href="/#/UpdateClothing"
+                this.$router.push("/UpdateClothing")
             }
             if(category=='household')
             {
                 window.sessionStorage.setItem("householdId", id);
-                window.location.href="/#/UpdateHousehold"
+                //window.location.href="/#/UpdateHousehold"
+                this.$router.push("/UpdateHousehold")
             }
             if(category=='automobiles')
             {
                 window.sessionStorage.setItem("automobileId", id);
-                window.location.href="/#/UpdateAutomobiles"
+                //window.location.href="/#/UpdateAutomobiles"
+                this.$router.push("/UpdateAutomobiles")
+                
             }
             if(category=='miscellenous')
             {
                 window.sessionStorage.setItem("miscellenousId", id);
-                window.location.href="/#/UpdateOthers"
+                //window.location.href="/#/UpdateOthers"
+                this.$router.push("/UpdateOthers")
+
             }
             
         },

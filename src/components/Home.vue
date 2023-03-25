@@ -55,20 +55,24 @@ export default {
     },
     methods: {
         electronic() {
-            window.location.href = "/#/BuyElectronics";
+            //window.location.href = "/#/BuyElectronics";
+            this.$router.push('/BuyElectronics')
         },
         cloth() {
-            window.location.href = "/#/BuyClothing";
+            // window.location.href = "/#/BuyClothing";
+            this.$router.push("/BuyClothing")
         },
         auto() {
-            window.location.href = "/#/BuyAutomobiles";
+            // window.location.href = "/#/BuyAutomobiles";
+            this.$router.push("/BuyAutomobiles")
         },
         utility() {
-            window.location.href = "/#/BuyHousehold";
+            // window.location.href = "/#/BuyHousehold";
+            this.$router.push("/BuyHousehold")
 
         },
         misc() {
-            window.location.href = "/#/BuyMiscellenous";
+            this.$router.push("/BuyMiscellenous")
         }
     }
 }

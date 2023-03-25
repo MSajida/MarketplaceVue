@@ -1,0 +1,89 @@
+<template>
+  <b-container fluid class="container">
+    <b-col md="10" class="top-30 col-md-12"> </b-col>
+    <b-col md="4" offset-md="4">
+      <div class="login">
+        <h4 class="mt-3">Reset Password</h4>
+        <hr class="mb-0" />
+        <b-form class="p-4" @submit.prevent="reset">
+          <b-form-group id="OTP" label="OTP" label-for="OTP" class="pass">
+            <b-form-input id="OTP" class="input-field" type="text" v-model="password.otp"
+              placeholder="Enter OTP" required></b-form-input>
+          </b-form-group>
+
+          <b-form-group id="new" label="New Password" label-for="New password" class="pass">
+            <b-form-input id="new" type="text" required placeholder="Enter new password" v-model="password.newPassword"
+              autocomplete="on"></b-form-input>
+          </b-form-group>
+          <b-form-group id="confirm" label="Confirm Password" label-for="Confirm password" class= "pass">
+            <b-form-input id="confirm" type="text" required placeholder="Confirm password" style="color:green;" v-model="password.confirmPassword"
+              autocomplete="on"></b-form-input>
+          </b-form-group>
+          <br />
+          <div class="col-md-11"> <b-button variant="primary" type="submit"> Reset Password </b-button></div>
+
+
+
+        </b-form>
+      </div>
+    </b-col>
+  </b-container>
+</template>
+  <script>
+  import Menu from "./Menu.vue"
+  
+  export default (
+    {
+    name: "resetPassword",
+    components: {
+          Menu
+      },
+    data() {
+      return {
+        password: {
+          otp:"",
+          newPassword:"",
+          confirmPassword:"",
+          email:""
+        }
+      };
+    },
+    methods: {
+        async reset() {
+        console.log("inside method")
+        this.password.email= sessionStorage.getItem('resetEmail')
+
+        console.log('password object', JSON.stringify(this.password))
+        this.$axios
+          .post("http://localhost:8082/api/password/reset",this.password)
+          .then((res) => {
+            if (res.status == 200) {
+              alert('Successfully changed the password')
+              window.location.href = "/login"
+            }
+            else
+            {
+              this.data=res;
+              console.log(this.data);
+             
+            }
+  
+          });
+      }
+    },
+  });
+  </script>
+  <style>
+  .login {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 69px;
+  margin-top: 25px;
+}
+
+.pass
+{
+  font-weight: bold;
+  color: green;
+}
+  </style>

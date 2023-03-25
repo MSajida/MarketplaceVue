@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div v-bind:class="{ full: isAuthenticated==false}">
+    <!-- <div v-bind:class="{ full: isAuthenticated==false}"> -->
       <Header></Header>
-    </div>
+    <!-- </div> -->
     
-    <div v-if = this.isAuthenticated>
-      <Menu></Menu>
-    </div>
+    <div v-if="isAuthenticated"> 
+        <Menu></Menu>
+     </div>
     <div v-else>
       
     </div>
@@ -22,13 +22,14 @@ import Vue from 'vue';
 import Header from "./components/APPHeader.vue"
 import Menu from "./components/Menu.vue"
 import IniHeader from "./components/InitialHeader.vue"
+// import {mapState} from 'vuex';
 export default {
   name: 'App',
   data() {
-    return Vue.observable({
+     return {
       isAuthenticated: false,
-      user: ""
-    })
+       user: ""
+     }
 
   },
 
@@ -38,23 +39,31 @@ export default {
     IniHeader
   },
   mounted() {
-    this.sample();
-    // this.isAuthenticated = sessionStorage.getItem("user")=="" ? false : true;
+    // showComponent(){
+      // console.log("jeevanApp")
+     
+      // Check if localStorage item is true
+       if(localStorage.getItem('loggedIn')=="true"){
+        this.isAuthenticated =  true;
+      } else{
+        this.isAuthenticated = false;
+      }
+    // }
   },
   updated(){
-    if(!sessionStorage.getItem("user")){
-      this.isAuthenticated = false
-    }else{
-      this.isAuthenticated = true
-    }
+    if(localStorage.getItem('loggedIn')=="true"){
+        this.isAuthenticated =  true;
+      } else{
+        this.isAuthenticated = false;
+      }
   },
   methods: {
     sample() {
-      this.user = sessionStorage.getItem('user');
-      if (this.user != "" || this.user!=null) {
-        this.isAuthenticated = true
-        console.log("user", this.user)
-      }
+      // this.user = sessionStorage.getItem('user');
+      // if (this.user != "" || this.user!=null) {
+      //   this.isAuthenticated = true
+      //   console.log("user", this.user)
+      // }
       // }else{
       //   console.log("nothing")
       //   this.isAuthenticated = false;

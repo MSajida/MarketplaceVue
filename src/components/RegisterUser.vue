@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>User Registration</h4>
-    <form class="col-lg-6 offset-lg-3">
+    <form @submit.prevent="registerStudent" class="col-lg-6 offset-lg-3">
       <div class="">
         <div class="form-group row">
           <label for="919 Number" class="col-sm-4 col-form-label">919 Number</label>
@@ -73,11 +73,13 @@
         <br>
         <br>
         <p id="paragraph" name="paragraph"></p>
-        <button type="submit" v-on:click="Register" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Register</button>
         <br>
       </div>
     </form>
+    <div v-if="showPopup">{{PopupMessage}}</div>
   </div>
+  
 </template>
 <script>
 import Menu from "./Menu.vue"
@@ -102,33 +104,42 @@ export default (
         city: "",
         state: "",
         zip:""
-      }
+      },
+      showPopup: false,
+      PopupMessage:''
     };
   },
   methods: {
-    Register() {
-      console.log("inside method")
-      console.log(this.student);
-      console.log(this.student.sID + "sid");
+    async registerStudent() {
+      if(this.student.password !== this.student.confirmPassword)
+      {
+        this.showPopup = true;
+        this.PopupMessage= 'Password and Confirm Password donot match!'
+      }
+      else
+      {
+      console.log("Inside register new student method")
+      // console.log(this.student);
+      // console.log(this.student.sID + "sid");
 
-      this.$axios
+      await this.$axios
         .post("http://localhost:8082/register",this.student)
         .then((res) => {
           if (res.status == 200) {
             this.data=res;
-            
-            console.log(this.data)
-            document.getElementById("paragraph").innerHTML = this.data.data;
+            // console.log(this.data)
             alert(this.data.data);
+            window.location.href = "/login"
           }
           else
           {
             this.data=res;
-            console.log(this.data);
-            document.getElementById("paragraph").innerHTML =this.data.data;
+            // console.log(this.data);
           }
 
         });
+
+      }
     }
   },
 });

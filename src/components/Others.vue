@@ -66,7 +66,9 @@ export default ({
                 qtyAvailable: "",
                 description: "",
                 images: "",
-                studentId: ""
+                studentId: "",
+                status:""
+
             },
             imgArry: [],
         });
@@ -105,6 +107,7 @@ export default ({
 
         RegisterProduct(Others) {
             this.Others.studentId= sessionStorage.getItem('user');
+            this.Others.status='Available'
             this.formdata.append('miscellenous', JSON.stringify(this.Others));
             this.$axios
                 .post("http://localhost:8082/miscellenous/addProduct", this.formdata)

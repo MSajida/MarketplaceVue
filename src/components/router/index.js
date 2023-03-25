@@ -10,7 +10,7 @@ import Clothing from '../Clothing';
 import AddProduct from '../AddProduct';
 import HouseHold from '../HouseHold';
 import Others from '../Others';
-import Forgetpassowrd from '../Forgetpassword';
+import Forgetpassword from '../Forgetpassword';
 import BuyElectronics from '../BuyElectronics';
 import BuyClothing from '../BuyClothing';
 import BuyAutomobiles from '../BuyAutomobiles';
@@ -23,6 +23,7 @@ import UpdateClothing from '../UpdateClothing';
 import UpdateHousehold from '../UpdateHousehold';
 import UpdateAutomobiles from '../UpdateAutomobiles';
 import UpdateOthers from '../UpdateOthers';
+import resetPassword from '../resetPassword';
 
 Vue.use(VueRouter);
 
@@ -30,107 +31,179 @@ const routes = [
     {
         path: "/register",
         component: RegisterUser,
+        meta: {
+          requiresAuth: false // set the "requiresAuth" meta field to true
+        }
     },
     {
-        path: "/",
+        path: "/login",
         component: Login,
     },
     {
         path: "/Home",
         component: Home,
+        meta: {
+          requiresAuth: true // set the "requiresAuth" meta field to true
+        }
     },
     {
         path: "/Electronics",
         component: Electronics,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/AddProduct",
         component: AddProduct,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/Clothing",
         component: Clothing,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/Automobiles",
         component: Automobiles,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/HouseHold",
         component: HouseHold,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/Others",
-        component: Others
+        component: Others,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/Forgetpassword",
-        component: Forgetpassowrd
+        component: Forgetpassword,
+        meta: {
+          requiresAuth: false // set the "requiresAuth" meta field to true
+        }
     },
     {
         path: "/BuyElectronics",
-        component: BuyElectronics
+        component: BuyElectronics,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/BuyClothing",
-        component: BuyClothing
+        component: BuyClothing,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path: "/BuyAutomobiles",
-        component: BuyAutomobiles  
+        component: BuyAutomobiles ,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          } 
 
     },
     {
         path: "/BuyHousehold",
-        component: BuyHousehold  
+        component: BuyHousehold  ,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
 
     }, 
     {
         path: "/BuyMiscellenous",
-        component: BuyMiscellenous
+        component: BuyMiscellenous,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
 
     }, 
     {
         path:"/Ads",
-        component: UserAds
+        component: UserAds,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path:"/MyAccount",
-        component: MyAccount
+        component: MyAccount,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path:"/UpdateElectronics",
-        component: UpdateElectronics
+        component: UpdateElectronics,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path:"/UpdateClothing",
-        component: UpdateClothing
+        component: UpdateClothing,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path:"/UpdateAutomobiles",
-        component: UpdateAutomobiles
+        component: UpdateAutomobiles,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path:"/UpdateHousehold",
-        component: UpdateHousehold
+        component: UpdateHousehold,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
     {
         path:"/UpdateOthers",
-        component: UpdateOthers
+        component: UpdateOthers,
+        meta: {
+            requiresAuth: true // set the "requiresAuth" meta field to true
+          }
     },
-
-
-   
-
-
-    
+    {
+        path:"/resetPassword",
+        component: resetPassword
+    }
     
 ]
 
 
 const router = new VueRouter({
     routes,
+    mode: "history"
 });
-
+router.beforeEach((to, from, next) => {
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth); // check if the "requiresAuth" meta field is set for the route
+    const isAuthenticated = localStorage.getItem('loggedIn'); // get the boolean value from local storage
+    console.log(isAuthenticated)
+  
+    if (requiresAuth && isAuthenticated==null) { // if the route requires authentication and the user is not authenticated
+      next('/login'); // redirect to the access denied page
+    } else {
+      next(); // allow the user to access the route
+    }
+  });
 
 export default router;

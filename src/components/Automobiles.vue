@@ -5,7 +5,7 @@
             <div class="form-group row ">
                 <label for="Category" class="col-sm-5">Sub-Category</label>
                 <div class="col-sm-6">
-                    <select v-model="Automobiles.subcategory">
+                    <select v-model="Automobiles.subcategory" required>
                         <option class="form-control">Cars</option>
                         <option class="form-control">Trucks</option>
                         <option class="form-control">2-Wheelers</option>
@@ -17,19 +17,19 @@
             <div class="form-group row">
                 <label for="productName" class="col-sm-5 col-form-label">Product Name</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Automobiles.productName" />
+                    <input type="text" class="form-control" v-model="Automobiles.productName" required />
                 </div>
             </div>
             <div class="form-group row">
                 <label for="productName" class="col-sm-5 col-form-label">Company Name</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Automobiles.companyName" />
+                    <input type="text" class="form-control" v-model="Automobiles.companyName" required />
                 </div>
             </div>
             <div class="form-group row">
                 <label for="modelName" class="col-sm-5">Model Name</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Automobiles.modelName" />
+                    <input type="text" class="form-control" v-model="Automobiles.modelName" required/>
                 </div>
             </div>
             <div class="form-group row">
@@ -42,31 +42,31 @@
             <div class="form-group row">
                 <label for="noOFDaysUsed" class="col-sm-5 ">No Of Days Used</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Automobiles.daysUsed" />
+                    <input type="text" class="form-control" v-model="Automobiles.daysUsed" required />
                 </div>
             </div>
             <div class="form-group row">
                 <label for="qtnAvailable" class="col-sm-5">Qty Available</label>
                 <div class="col-sm-5">
-                    <input type="number" value="1" v-model="Automobiles.qtyAvailable">
+                    <input type="number" value="1" v-model="Automobiles.qtyAvailable" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="price" class="col-sm-5 ">Price</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Automobiles.price" />
+                    <input type="text" class="form-control" v-model="Automobiles.price" required/>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="description" class="col-sm-5 ">Product Description</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Automobiles.description" />
+                    <input type="text" class="form-control" v-model="Automobiles.description" required />
                 </div>
             </div>
             <br>
             <div class="form-group row">
                 <div class="col-sm-5">
-                    <input type="file" id="myFile" name="filename" multiple @change="onFileSelected">
+                    <input type="file" id="myFile" name="filename" multiple @change="onFileSelected" required>
                 </div>
             </div>
         </form>
@@ -98,7 +98,8 @@ export default ({
                 qtyAvailable: "",
                 description: "",
                 images: "",
-                studentId:""
+                studentId:"",
+                status:""
 
             },
             imgArry: [],
@@ -139,6 +140,7 @@ export default ({
 
         RegisterProduct(Automobiles) {
             this.Automobiles.studentId = (sessionStorage.getItem('user'));
+            this.Automobiles.status='Available'
             this.formdata.append('automobiles', JSON.stringify(this.Automobiles));
             this.$axios
                 .post("http://localhost:8082/automobiles/addProduct", this.formdata)

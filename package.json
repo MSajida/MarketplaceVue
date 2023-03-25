@@ -24,6 +24,7 @@
     "vue-carousel": "^0.18.0",
     "vue-router": "^3.5.2",
     "vue-sidebar-menu-akahon": "^0.1.4",
+    "vuex": "^2.3.1",
     "webpack": "^5.75.0"
   },
   "devDependencies": {

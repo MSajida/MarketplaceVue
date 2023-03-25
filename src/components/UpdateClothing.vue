@@ -43,7 +43,7 @@
             <div class="form-group row">
                 <label for="qtnAvailable" class="col-sm-5">Qty Available</label>
                 <div class="col-sm-5">
-                    <input type="number" value="1" v-model="Clothing.qtyAvailable">
+                    <input type="number" style="width: 190px" value="1" v-model="Clothing.qtyAvailable">
                 </div>
             </div>
             <div class="form-group row">
@@ -56,6 +56,16 @@
                 <label for="description" class="col-sm-5 ">Product Description</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" v-model="Clothing.description" />
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label for="Category" class="col-sm-5">Status</label>
+                <div class="col-sm-5" >
+                    <select style="width: 190px" v-model="Clothing.status">
+                        <option class="">Available</option>
+                        <option class="">Sold</option>
+                    </select>
                 </div>
             </div>
         </form>
@@ -93,6 +103,7 @@ export default ({
                 price: "",
                 description:"",
                 images: "",
+                status:""
             },
 
         });
@@ -111,7 +122,8 @@ export default ({
                         this.Clothing = this.data.data
                         this.category= 'Clothing'
                         alert("Successfully updated the product");
-                        window.location.href="/#/Ads"
+                        //window.location.href="/#/Ads"
+                        this.$router.push("/Ads")
 
                     }
                     else {

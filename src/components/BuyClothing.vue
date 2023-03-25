@@ -17,18 +17,18 @@
                             </carousel>
 
                             <h5 class="card-title">{{ c.productName }}</h5>
-                            <p class="card-text">${{ c.price }}</p>
-                            <p class="card-text">{{ c.description }}</p>
-                            <p class="card-text">Size: {{ c.size }}</p>
-                            <p class="card-text">{{ c.daysUsed }} Days used</p>
-                            <p class="card-text">{{ c.qtyAvailable }} Available</p>
+                            <p class="card-text" style="color: blue">${{ c.price }}</p>
+                            <p class="card-text" style="color: rebeccapurple">{{ c.description }}</p>
+                            <p class="card-text"  style="color: gray">Size: {{ c.size }}</p>
+                            <p class="card-text" style="color: red">{{ c.daysUsed }} Days used</p>
+                            <p class="card-text" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
                             <br />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <a href="#/home">Home</a>
+        <router-link to="/Home">Home</router-link>
     </div>
 </template>
 <script>
@@ -67,6 +67,7 @@ export default {
     methods: {
 
         async clothing() {
+            console.log("234r")
             await this.$axios
                 .get(
                     "http://localhost:8082/clothing/clothes"
@@ -122,8 +123,8 @@ export default {
 
 .a1 {
 
-    height: 550px;
-    width: 330px;
+    height: 500px;
+    width: 400px;
 }
 
 
