@@ -97,7 +97,7 @@ export default ({
         UpdateProduct(Electronics) {
             this.HouseHold.id= this.productId;
             this.$axios
-            .put("http://localhost:8082/household/updateHousehold",this.HouseHold)
+            .put("http://100.26.237.185:8082/household/updateHousehold",this.HouseHold)
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
@@ -122,7 +122,7 @@ export default ({
             
             this.$axios
                 .get(
-                    "http://localhost:8082/household/product/" + id
+                    "http://100.26.237.185:8082/household/product/" + id
                 )
                 .then((res) => {
                     if (res.status == 200) {
