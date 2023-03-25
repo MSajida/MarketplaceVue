@@ -38,7 +38,7 @@ export default {
       console.log('Inside forget')
       sessionStorage.setItem('resetEmail', this.email)
       this.$axios
-          .post("http://localhost:8082/api/password/sendResetOtp?email="+ this.email)
+          .post("http://100.26.237.185:8082/api/password/sendResetOtp?email="+ this.email)
           .then((res) => {
             if (res.status == 200) {
               alert('OTP is sent')
