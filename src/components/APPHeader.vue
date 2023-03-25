@@ -110,7 +110,7 @@ export default ({
       localStorage.removeItem('loggedIn')
       sessionStorage.removeItem("user");
       //  this.$router.push('/login')
-      window.location.href = "/login";
+      window.location.href = "/";
     }
 
   },

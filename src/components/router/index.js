@@ -200,7 +200,7 @@ router.beforeEach((to, from, next) => {
     console.log(isAuthenticated)
   
     if (requiresAuth && isAuthenticated==null) { // if the route requires authentication and the user is not authenticated
-      next('/login'); // redirect to the access denied page
+      next('/'); // redirect to the access denied page
     } else {
       next(); // allow the user to access the route
     }

@@ -51,7 +51,7 @@ export default (
         console.log(this.login);
 
         await this.$axios
-          .post("http://100.26.237.185:8082/login", this.login)
+          .post("http://localhost:8082/login", this.login)
           .then((res) => {
             if (res.status == 200) {
               this.data = res;
@@ -69,11 +69,17 @@ export default (
                   // this.$router.push('/Home')
 
               }
-              else 
-              // if (this.data.data === "User is not registered, Please sign in") 
+              else if (this.data.data === "User is not registered, Please sign in") 
               {
                 this.$router.push('/register')
               }
+
+              else
+              {
+                this.$router.push('/')
+              }
+
+              
              
             }
             else {

@@ -36,7 +36,7 @@
         console.log("logout done")
         alert("logout success")
         this.isAuthenticated = false
-        window.location.href = "/#/login";
+        window.location.href = "/#/";
       },
       sample() {
         this.user = sessionStorage.getItem('user');

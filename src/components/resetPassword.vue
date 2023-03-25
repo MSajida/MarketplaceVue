@@ -12,11 +12,11 @@
           </b-form-group>
 
           <b-form-group id="new" label="New Password" label-for="New password" class="pass">
-            <b-form-input id="new" type="text" required placeholder="Enter new password" v-model="password.newPassword"
+            <b-form-input id="new" type="password" required placeholder="Enter new password" v-model="password.newPassword"
               autocomplete="on"></b-form-input>
           </b-form-group>
           <b-form-group id="confirm" label="Confirm Password" label-for="Confirm password" class= "pass">
-            <b-form-input id="confirm" type="text" required placeholder="Confirm password" style="color:green;" v-model="password.confirmPassword"
+            <b-form-input id="confirm" type="password" required placeholder="Confirm password" v-model="password.confirmPassword"
               autocomplete="on"></b-form-input>
           </b-form-group>
           <br />
@@ -59,7 +59,7 @@
           .then((res) => {
             if (res.status == 200) {
               alert('Successfully changed the password')
-              window.location.href = "/login"
+              window.location.href = "/"
             }
             else
             {

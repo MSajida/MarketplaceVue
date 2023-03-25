@@ -129,7 +129,7 @@ export default (
             this.data=res;
             // console.log(this.data)
             alert(this.data.data);
-            window.location.href = "/login"
+            window.location.href = "/"
           }
           else
           {
