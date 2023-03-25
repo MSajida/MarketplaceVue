@@ -70,7 +70,7 @@ export default {
             console.log("234r")
             await this.$axios
                 .get(
-                    "http://localhost:8082/clothing/clothes"
+                    "http://100.26.237.185:8082/clothing/clothes"
                 )
 
                 .then((res) => {
