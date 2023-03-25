@@ -144,7 +144,7 @@ export default ({
             this.HouseHold.status= 'Available'
             this.formdata.append('household', JSON.stringify(this.HouseHold));
             this.$axios
-                .post("http://localhost:8082/household/addProduct", this.formdata)
+                .post("http://100.26.237.185:8082/household/addProduct", this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         console.log("success")
