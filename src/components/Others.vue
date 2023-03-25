@@ -110,7 +110,7 @@ export default ({
             this.Others.status='Available'
             this.formdata.append('miscellenous', JSON.stringify(this.Others));
             this.$axios
-                .post("http://localhost:8082/miscellenous/addProduct", this.formdata)
+                .post("http://100.26.237.185:8082/miscellenous/addProduct", this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         console.log("success")
