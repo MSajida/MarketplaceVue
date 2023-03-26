@@ -55,7 +55,7 @@
 
         console.log('password object', JSON.stringify(this.password))
         this.$axios
-          .post("http://100.26.237.185:8082/api/password/reset",this.password)
+          .post("http://52.22.24.58:8082/api/password/reset",this.password)
           .then((res) => {
             if (res.status == 200) {
               alert('Successfully changed the password')
