@@ -110,7 +110,7 @@ export default (
 
         this.$axios
           .get(
-            "http://100.26.237.185:8082/student/" + id
+            "http://52.22.24.58:8082/student/" + id
           )
           .then((res) => {
             if (res.status == 200) {
@@ -138,7 +138,7 @@ export default (
         
         let id = sessionStorage.getItem("user")
         this.$axios
-          .put("http://100.26.237.185:8082/updateProfile/" + id, this.student)
+          .put("http://52.22.24.58:8082/updateProfile/" + id, this.student)
 
           .then((res) => {
             if (res.status == 200) {
