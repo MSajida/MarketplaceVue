@@ -70,7 +70,7 @@ export default {
         async electronics() {
             await this.$axios
                 .get(
-                    "http://100.26.237.185:8082/electronics/electronics"
+                    "http://52.22.24.58:8082/electronics/electronics"
                 )
 
                 .then((res) => {
