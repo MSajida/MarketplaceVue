@@ -123,7 +123,7 @@ export default (
       // console.log(this.student.sID + "sid");
 
       await this.$axios
-        .post("http://100.26.237.185:8082/register",this.student)
+        .post("http://52.22.24.58:8082/register",this.student)
         .then((res) => {
           if (res.status == 200) {
             this.data=res;
