@@ -75,7 +75,7 @@ export default {
         async automobile() {
             await this.$axios
                 .get(
-                    "http://100.26.237.185:8082/automobiles/automobiles"
+                    "http://52.22.24.58:8082/automobiles/automobiles"
                 )
 
                 .then((res) => {
