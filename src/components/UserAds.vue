@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content page-container" id="page-content">
+    <div class="page-content page-container" id="page-content" style="background-color: azure;" >
         <h1>ADS Items</h1>
         <div class="row card-container">
             <div class="col mb-4" v-for="c in this.data.data.adsPageItems" :key="c.id">
@@ -62,7 +62,7 @@ export default {
             console.log("inside delete" , id, category)
             await this.$axios
                 .delete(
-                    "http://52.22.24.58:8082/"+category+"/delete/"+id
+                    "http://localhost:8082/"+category+"/delete/"+id
                 )
 
                 .then((res) => {
@@ -119,7 +119,7 @@ export default {
             console.log('id is', this.Electronics.studentId);
             await this.$axios
                 .get(
-                    "http://52.22.24.58:8082/ads/" + this.Electronics.studentId
+                    "http://localhost:8082/ads/" + this.Electronics.studentId
                 )
 
                 .then((res) => {

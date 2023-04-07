@@ -5,7 +5,7 @@
             <div class="form-group row ">
                 <label for="Category" class="col-sm-5">Sub-Category</label>
                 <div class="col-sm-6">
-                    <select v-model="Electronics.subcategory">
+                    <select v-model="Electronics.subcategory" required>
                         <option class="form-control">SmartPhone</option>
                         <option class="form-control">Laptop</option>
                         <option class="form-control">TV</option>
@@ -17,7 +17,7 @@
             <div class="form-group row">
                 <label for="productName" class="col-sm-5 col-form-label">Product Name</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Electronics.productName" />
+                    <input type="text" class="form-control" v-model="Electronics.productName" required />
                 </div>
             </div>
             <div class="form-group row">
@@ -36,19 +36,19 @@
             <div class="form-group row">
                 <label for="noOFDaysUsed" class="col-sm-5 ">No Of Days Used</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Electronics.daysUsed" />
+                    <input type="text" class="form-control" v-model="Electronics.daysUsed" required />
                 </div>
             </div>
             <div class="form-group row">
                 <label for="qtnAvailable" class="col-sm-5">Qty Available</label>
                 <div class="col-sm-5">
-                    <input type="number" value="1" v-model="Electronics.qtyAvailable">
+                    <input type="number" min="1" v-model="Electronics.qtyAvailable" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="price" class="col-sm-5 ">Price</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" v-model="Electronics.price" />
+                    <input type="text" class="form-control" v-model="Electronics.price" required />
                 </div>
             </div>
             <div class="form-group row">
@@ -60,7 +60,7 @@
             <br>
             <div class="form-group row">
                 <div class="col-sm-5">
-                    <input type="file" id="myFile" name="filename" multiple @change="onFileSelected">
+                    <input type="file" id="myFile" name="filename" multiple @change="onFileSelected" required>
                 </div>
             </div>
         </form>
@@ -135,9 +135,10 @@ export default ({
         RegisterProduct(Electronics) {
             this.Electronics.studentId = (sessionStorage.getItem('user'));
             this.Electronics.status= 'Available'
+            console.log(this.formdata); 
             this.formdata.append('electronics', JSON.stringify(this.Electronics));
             this.$axios
-                .post("http://52.22.24.58:8082/electronics/addProduct", this.formdata)
+                .post("http://localhost:8082/electronics/addProduct", this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         console.log("success")

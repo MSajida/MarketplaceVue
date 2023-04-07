@@ -1,12 +1,11 @@
 <template>
-  <div>
   <b-container id="mainContainer" align-v="center">
     <b-col md="10" class="top-30 col-md-12"> </b-col>
     <b-col md="4" offset-md="4">
       <div class="forget">
         <h4 class="mt-3">Forget Password</h4>
         <hr class="mb-0" />
-        <b-form class="p-4" @submit.prevent="forget" id="formRegister">
+        <b-form class="p-4" @submit.prevent="forget">
           <b-form-group id="username" label="Enter your registered email and we will send you a OTP to reset your password" label-for="username">
             <b-form-input
               id="username"
@@ -25,7 +24,6 @@
       </div>
     </b-col>
   </b-container>
-</div>
 </template>
 <script>
 export default {
@@ -50,15 +48,12 @@ export default {
                 alert('Invalid user');
                 window.location.href="/Forgetpassword"
               }
-              else
-              {
-                alert('OTP is sent');
-              window.location.href="/resetPassword"
-              }
 
             }
             else
             {
+              alert('OTP is sent');
+              window.location.href="/resetPassword"
              
             }
   
@@ -80,16 +75,15 @@ export default {
   margin-top: 2px;
 }
 
+#mainContainer {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
 .top-30 {
   margin-top: 5%;
   margin-bottom: 25px;
-}
-#formRegister {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
   .top-30 {

@@ -143,7 +143,7 @@ export default ({
             this.Automobiles.status='Available'
             this.formdata.append('automobiles', JSON.stringify(this.Automobiles));
             this.$axios
-                .post("http://52.22.24.58:8082/automobiles/addProduct", this.formdata)
+                .post("http://localhost:8082/automobiles/addProduct", this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         console.log("success")

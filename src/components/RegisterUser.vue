@@ -1,149 +1,280 @@
-<template>
-  <div>
-    <h4>User Registration</h4>
-    <form @submit.prevent="registerStudent" class="col-lg-6 offset-lg-3">
-      <div class="">
-        <div class="form-group row">
-          <label for="919 Number" class="col-sm-4 col-form-label">919 Number</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.sID " required />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="fname" class="col-sm-4 col-form-label">First Name</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.firstName"  required/>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="lname" class="col-sm-4 col-form-label">Last Name</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.lastName"  required/>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="lname" class="col-sm-4 col-form-label">Password</label>
-          <div class="col-sm-5">
-            <input type="password" class="form-control" v-model="student.password" required />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="lname" class="col-sm-4 col-form-label">Confirm Password</label>
-          <div class="col-sm-5">
-            <input type="password" class="form-control" v-model="student.confirmPassword" required />
-          </div>
-        </div>
+<template style="background-color: azure">
+  <div class="background">
+    <b-container id="mainContainer" align-v="center">
 
-        <div class="form-group row">
-          <label for="Email" class="col-sm-4 col-form-label">Email</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.email" required/>
+      <b-row align-v="center" align-h="center">
+        <b-col md="6">
+          <div>
+            <b-card id="cardLogin" style="background-color: aliceblue;">
+              <b-form @submit.prevent="onSubmit" v-if="show" id="formRegister">
+
+
+                <h1 class="text-center mb-3" style="color: #1f5a7c">Register</h1>
+                <span class="text-center mb-4 other-account">Please register yourself</span>
+                <b-form-group id="input-group-1" label-for="919 Number"  style="margin-bottom: 4px;">
+                  <b-form-input id="919" class="input" v-model="student.sID" type="text" placeholder="919 Number"
+                    required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="FirstName" style="margin-bottom: 4px;">
+                  <b-form-input id="first" class="input" v-model="student.firstName" type="text" placeholder="First Name"
+                    required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="LastName" style="margin-bottom: 4px;">
+                  <b-form-input id="last" class="input" v-model="student.lastName" type="text" placeholder="Last Name"
+                    required></b-form-input>
+                </b-form-group>
+
+                <b-form-group id="input-group-1" label-for="Password" style="margin-bottom: 4px;">
+                  <b-form-input id="password" class="input" v-model="student.password" placeholder="Password"
+                    type="password" required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="ConfirmPassword" style="margin-bottom: 4px;">
+                  <b-form-input id="confirm" class="input" v-model="student.confirmPassword"
+                    placeholder="Confirm Password" type="password" required></b-form-input>
+                </b-form-group>
+                <span v-if="!passwordsMatch" class="text-danger">Passwords do not match</span>
+                <b-form-group id="input-group-1" label-for="email" style="margin-bottom: 4px;">
+                  <b-form-input id="email" class="input" v-model="student.email" type="text" placeholder="Email address"
+                    required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="phoneNumber" style="margin-bottom: 4px;">
+                  <b-form-input id="phone" class="input" v-model="student.phoneNumber" type="text"
+                    placeholder="Phone Number" required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="address" style="margin-bottom: 4px;">
+                  <b-form-input id="address" class="input" v-model="student.address" type="text" placeholder="Address"
+                    required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="city" style="margin-bottom: 4px;">
+                  <b-form-input id="city" class="input" v-model="student.city" type="text" placeholder="City"
+                    required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="state" style="margin-bottom: 4px;">
+                  <b-form-input id="state" class="input" v-model="student.state" type="text" placeholder="State"
+                    required></b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-1" label-for="zip" style="margin-bottom: 4px;">
+                  <b-form-input id="zip" class="input" v-model="student.zip" type="text" placeholder="ZipCode"
+                    required></b-form-input>
+                </b-form-group>
+                <!-- <div class="d-flex justify-content-center mt-3">
+        <b-button type="submit" variant="primary" class="btn-login"
+          >Entrar <font-awesome-icon icon="arrow-right" class="arrow"
+        /></b-button>
+      </div> -->
+      <br>
+
+                <b-form-group id="input-group-1" label-for="zip" style="margin-bottom: 4px;">
+                  <b-button variant="primary" type="submit"> Register </b-button>
+                </b-form-group>
+              </b-form>
+            </b-card>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="phone" class="col-sm-4 col-form-label">Contact number</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.phoneNumber" required/>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="address" class="col-sm-4 col-form-label">Address</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.address" required/>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="city" class="col-sm-4 col-form-label">City</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.city" required/>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="state" class="col-sm-4 col-form-label">State</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.state" required/>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="Zip" class="col-sm-4 col-form-label">Zip code</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" v-model="student.zip" required/>
-          </div>
-        </div>
-        <br>
-        <br>
-        <p id="paragraph" name="paragraph"></p>
-        <button type="submit" class="btn btn-primary">Register</button>
-        <br>
-      </div>
-    </form>
-    <div v-if="showPopup">{{PopupMessage}}</div>
+        </b-col>
+      </b-row>
+    </b-container>
+
   </div>
-  
 </template>
-<script>
-import Menu from "./Menu.vue"
 
-export default (
-  {
-  name: "RegisterUser",
-  components: {
-        Menu
-    },
+<script>
+
+export default {
+  name: "LoginForm",
+  created() {
+    console.log("as")
+    require('@/assets/background.jpg')
+  },
   data() {
     return {
       student: {
         sID: "",
         firstName: "",
         lastName: "",
-        password:"",
-        confirmPassword:"",
+        password: "",
+        confirmPassword: "",
         email: "",
         phoneNumber: "",
         address: "",
         city: "",
         state: "",
-        zip:""
+        zip: ""
       },
-      showPopup: false,
-      PopupMessage:''
+      show: true,
+      
     };
   },
+
+  computed:
+    {
+      passwordsMatch() {
+      return this.student.password === this.student.confirmPassword;
+    },
+    },
+
   methods: {
-    async registerStudent() {
-      if(this.student.password !== this.student.confirmPassword)
-      {
-        this.showPopup = true;
-        this.PopupMessage= 'Password and Confirm Password donot match!'
-      }
-      else
-      {
-      console.log("Inside register new student method")
-      // console.log(this.student);
-      // console.log(this.student.sID + "sid");
+    async onSubmit(event) {
+      console.log('login', JSON.stringify(this.student));
+      //alert(JSON.stringify(this.login));
 
       await this.$axios
         .post("http://52.22.24.58:8082/register",this.student)
         .then((res) => {
           if (res.status == 200) {
-            this.data=res;
+            this.data = res;
             // console.log(this.data)
             alert(this.data.data);
+            if(this.data.data=='Student is already registered')
+            window.location.href = "/register"
+            else
             window.location.href = "/"
+
           }
-          else
-          {
-            this.data=res;
+          else {
+            this.data = res;
             // console.log(this.data);
+            alert(this.data.data);
+           
           }
 
         });
-
-      }
-    }
+    },
   },
-});
+};
 </script>
-<style>
 
+<style lang="scss">
+@import "../assets/scss/animations.scss";
+@import "../assets/scss/variables.scss";
+@import "../assets/scss/fonts.scss";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.background {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9vt93Mc8W8XsQD3ZUS3hAnJIauaHTac8zCQ&usqp=CAU") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+
+}
+
+body {
+  //font-family: $OpenSans !important;
+}
+
+#cardLogin {
+  margin-top: 30px;
+  margin-left: 64px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px $gray;
+
+  #formRegister {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+
+    h1 {
+      color: $primary;
+      font-weight: 700;
+      font-family: $Poppins;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      color: $lightBlack;
+      font-weight: 600;
+      font-family: $Poppins;
+    }
+
+    .other-account {
+      color: $gray;
+    }
+
+    .icons {
+      width: 30px;
+      cursor: pointer;
+    }
+
+    .input {
+      border-radius: 10px;
+    }
+
+    .remember {
+      color: $lightBlack;
+    }
+
+    .blob {
+      position: absolute;
+      top: -15%;
+      left: -12%;
+      width: 150px;
+      opacity: 0.2;
+    }
+  }
+
+  /* .logoLogin {
+    margin: 0 auto;
+    width: 100px;
+  } */
+
+  .forgotPassword {
+    color: $gray;
+    text-decoration: none;
+
+    &:hover {
+      color: #1f5a7c;
+      transition: 0.5s ease-in-out;
+    }
+  }
+
+  /* .btn-login {
+    width: 200px;
+    background-color: $primary;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: $secondary;
+      transition: 0.5s ease-in-out;
+    }
+  } */
+
+  .arrow-btn {
+    width: 100px;
+    border-radius: 15px;
+    background: $primary;
+    color: #fff;
+    font-size: 60px;
+    padding: 5px;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      background: $secondary;
+      transition: 0.5s ease-in-out;
+      box-shadow: none;
+    }
+  }
+
+  .register {
+    span {
+      color: $lightBlack;
+    }
+
+    .createAccount {
+      color: $primary;
+      text-decoration: none;
+    }
+  }
+
+  #mainContainer {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+
+}
 </style>

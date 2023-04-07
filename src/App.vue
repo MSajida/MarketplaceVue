@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <!-- <div v-bind:class="{ full: isAuthenticated==false}"> -->
+      
       <Header></Header>
+      
     <!-- </div> -->
     
     <div v-if="isAuthenticated"> 
@@ -12,6 +14,7 @@
     </div>
     <div class="content container-fluid">
       <router-view />
+      
     </div>
   </div>
 </template>
@@ -22,9 +25,13 @@ import Vue from 'vue';
 import Header from "./components/APPHeader.vue"
 import Menu from "./components/Menu.vue"
 import IniHeader from "./components/InitialHeader.vue"
+import LoginForm from "./components/LoginForm.vue"
 // import {mapState} from 'vuex';
 export default {
   name: 'App',
+  components: {
+    LoginForm
+  },
   data() {
      return {
       isAuthenticated: false,

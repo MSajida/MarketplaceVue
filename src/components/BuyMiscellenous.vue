@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content page-container" id="page-content">
+    <div class="page-content page-container" id="page-content" style="background-color: azure;">
 
         <h1>Miscellenous List</h1>
 
@@ -18,10 +18,10 @@
                             </carousel>
                           
                             <h5 class="card-title">{{ c.productName }}</h5>
-                            <p class="card-text" style="color: blue">${{ c.price }}</p>
-                            <p class="card-text" style="color: rebeccapurple">{{ c.description }}</p>
-                            <p class="card-text" style="color: red">{{ c.daysUsed }} Days used</p>
-                            <p class="card-text" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
+                            <p class="card-text" v-if="c.price" style="color: blue">${{ c.price }}</p>
+                            <p class="card-text" v-if="c.description" style="color: rebeccapurple">{{ c.description }}</p>
+                            <p class="card-text" v-if="c.daysUsed" style="color: red">{{ c.daysUsed }} Days used</p>
+                            <p class="card-text" v-if="c.qtyAvailable" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
                             <br />
                         </div>
                     </div>
@@ -69,7 +69,7 @@ export default {
         async misc() {
             await this.$axios
                 .get(
-                    "http://52.22.24.58:8082/miscellenous/miscellenous"
+                    "http://localhost:8082/miscellenous/miscellenous"
                 )
 
                 .then((res) => {

@@ -24,10 +24,11 @@ import UpdateHousehold from '../UpdateHousehold';
 import UpdateAutomobiles from '../UpdateAutomobiles';
 import UpdateOthers from '../UpdateOthers';
 import resetPassword from '../resetPassword';
+import LoginForm from '../LoginForm';
 
 Vue.use(VueRouter);
 
-const routes = [
+const  routes = [
     {
         path: "/register",
         component: RegisterUser,
@@ -36,7 +37,7 @@ const routes = [
         }
     },
     {
-        path: "/",
+        path: "/login",
         component: Login,
     },
     {
@@ -185,8 +186,11 @@ const routes = [
     {
         path:"/resetPassword",
         component: resetPassword
-    }
-    
+    },
+    {
+      path:"/",
+      component: LoginForm
+  },
 ]
 
 

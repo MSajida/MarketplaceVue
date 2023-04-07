@@ -19,8 +19,9 @@
           <!-- <router-link to="/profile">this.user</router-link> -->
 
           <font-awesome-icon icon="fa-powerOff" class="mr-3" />
+          <a id="qsLogoutBtn" href="#" class @click.prevent="logout">Log out</a>
 
-          <button id="qsLogoutBtn" v-on:click="logout">Log out</button>
+          
         </div>
       </div>
 
