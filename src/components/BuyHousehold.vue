@@ -68,7 +68,7 @@ export default {
         async household() {
             await this.$axios
                 .get(
-                    "http://localhost:8082/household/household"
+                    "http://52.22.24.58:8082/household/household"
                 )
 
                 .then((res) => {

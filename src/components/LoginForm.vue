@@ -96,7 +96,7 @@ else
             //alert(JSON.stringify(this.login));
 
             await this.$axios
-          .post("http://localhost:8082/login", this.login)
+          .post("http://52.22.24.58:8082/login", this.login)
           .then((res) => {
             if (res.status == 200) {
               this.data = res;
