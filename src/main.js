@@ -6,7 +6,6 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import axios from "axios";
 import router from "./components/router"
 import VueSidebarMenuAkahon from "vue-sidebar-menu-akahon";
-import {v4 as uuidv4} from 'uuid';
 import VueCarousel, { Slide } from 'vue-carousel';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -36,7 +35,6 @@ Vue.prototype.$axios = axios.create({
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
-Vue.use(uuidv4);
 //Vue.use(initializeApp);
 
 
