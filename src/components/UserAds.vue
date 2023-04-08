@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content page-container" id="page-content" style="background-color: azure;" >
+    <div>
         <h1>ADS Items</h1>
         <div class="row card-container">
             <div class="col mb-4" v-for="c in this.data.data.adsPageItems" :key="c.id">
