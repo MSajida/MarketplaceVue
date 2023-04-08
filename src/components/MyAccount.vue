@@ -1,5 +1,5 @@
 <template>
-  <div class="background" style="background-color: azure; height: 600px;">
+  <div>
     <b-container id="mainContainer" align-v="center">
 
       <b-row align-v="center" align-h="center">
