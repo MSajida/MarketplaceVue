@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content page-container" id="page-content" style="background-color: azure;">
+    <div class="page-content page-container" id="page-content">
 
         <h1>Electronics List</h1>
         <div class="row">
