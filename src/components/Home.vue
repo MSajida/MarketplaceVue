@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: azure;">
+    <div>
 
         <div class="row">
             <div class="card" style="width: 300px;background-color: aliceblue;" v-on:click="cloth">
