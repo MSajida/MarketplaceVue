@@ -11,6 +11,7 @@
 
                 <h1 class="text-center mb-3" style="color: #1f5a7c">Register</h1>
                 <span class="text-center mb-4 other-account">Please register yourself</span>
+                <span class="text-center mb-4 other-account" style="color:red">All the fields are mandatory</span>
                 <b-form-group id="input-group-1" label-for="919 Number"  style="margin-bottom: 4px;">
                   <b-form-input id="919" class="input" v-model="student.sID" type="text" placeholder="919 Number"
                     required></b-form-input>
