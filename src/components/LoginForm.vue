@@ -92,7 +92,7 @@ export default {
        async onSubmit(event) {
 if(this.login.username==""||this.login.password=="")
 {
-    alert('Username or password must not be empty');
+    
 }
 
 else
@@ -129,7 +129,6 @@ else
 
               else
               {
-                alert(this.data.data);
                 this.$router.push('/')
               }
 
