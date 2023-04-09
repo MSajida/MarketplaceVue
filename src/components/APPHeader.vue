@@ -105,7 +105,7 @@ export default ({
       // console.log("User clicked Logout")
       sessionStorage.removeItem('user')
       // console.log("logout done")
-      alert("logout success")
+      //alert("logout success")
       this.isAuthenticated = false
       // localStorage.setItem("loggedIn", "false");
       localStorage.removeItem('loggedIn')
