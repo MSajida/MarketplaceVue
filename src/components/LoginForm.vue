@@ -1,5 +1,5 @@
 <template>
-    <div class="background">
+    <div class>
         <b-container id="mainContainer" align-v="center">
 
             <b-row align-v="center" align-h="center">
@@ -37,7 +37,7 @@
         </div> -->
                                 <div class="d-flex justify-content-center mt-3">
                                     <a href="#">
-                                        <font-awesome-icon icon="arrow-right"  class="arrow-btn" @click.prevent="onSubmit"/>
+                                        <font-awesome-icon icon="arrow-right" :class="{'disabled': isDisabled}" class="arrow-btn"  @click.prevent="onSubmit"/>
                                     </a>
                                 </div>
 
@@ -79,6 +79,13 @@ export default {
             },
             show: true,
         };
+    },
+    computed:
+    {
+       isDisabled()
+       {
+        return this.login.username ===''|| this.login.password ==='';
+       }
     },
 
     methods: {
@@ -226,6 +233,12 @@ body {
             transition: 0.5s ease-in-out;
         }
     }
+
+    .disabled {
+  opacity: 0.5; /* or any other styles to indicate that the icon is disabled */
+  cursor: not-allowed; /* optional: change cursor to indicate that the icon is not clickable */
+}
+
 
     /* .btn-login {
       width: 200px;
