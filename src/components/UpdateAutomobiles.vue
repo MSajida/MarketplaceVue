@@ -207,7 +207,7 @@ export default ({
                         console.log(this.data)
                         this.Automobiles = this.data.data
                         this.category= 'Automobiles'
-                        alert("Successfully updated the product");
+                       // alert("Successfully updated the product");
                        // window.location.href="/#/Ads"
                        this.$router.push("/Ads")
 
