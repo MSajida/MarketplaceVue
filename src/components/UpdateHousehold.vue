@@ -190,7 +190,7 @@ export default ({
                         console.log(this.data)
                         this.HouseHold = this.data.data
                         this.category= 'Household'
-                        alert("Successfully updated the product");
+                        //alert("Successfully updated the product");
                         //window.location.href="/#/Ads"
                         this.$router.push("/Ads")
 
