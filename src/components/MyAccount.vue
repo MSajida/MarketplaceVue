@@ -156,7 +156,6 @@ export default {
             this.data = res;
 
             console.log(this.data)
-            alert('Profile Updated')
             this.student = this.data.data
             this.read = true
 
