@@ -108,7 +108,7 @@ export default (
 
 .pass {
   font-weight: bold;
-  color: green;
+  color: gray;
 }
 </style>
   </style>
