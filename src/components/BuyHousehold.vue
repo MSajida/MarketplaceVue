@@ -19,8 +19,10 @@
                             <h5 class="card-title">{{ c.productName }}</h5>
                             <p class="card-text" v-if="c.price" style="color: blue">${{ c.price }}</p>
                             <p class="card-text" v-if="c.description" style="color: rebeccapurple">{{ c.description }}</p>
-                            <p class="card-text"  v-if="c.daysUsed" style="color: red">{{ c.daysUsed }} Days used</p>
+                            <p class="card-text"  v-if="c.daysUsed" style="color: rebeccapurple">{{ c.daysUsed }} Days used</p>
                             <p class="card-text" v-if="c.qtyAvailable" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
+                            <font-awesome-icon icon="phone" class="rotate-icon" style="color: green;"/> 
+                            <span style="margin-left:7px; color: darkslateblue;">{{c.phoneNumber}}</span>
                             <br />
                         </div>
                     </div>
@@ -58,6 +60,7 @@ export default {
                 daysUsed: "",
                 qtyAvailable: "",
                 description: "",
+                phoneNumber:"",
                 images: ""
             }
 
@@ -68,7 +71,7 @@ export default {
         async household() {
             await this.$axios
                 .get(
-                    "http://52.22.24.58:8082/household/household"
+                    "http://localhost:8082/household/household"
                 )
 
                 .then((res) => {
@@ -122,6 +125,10 @@ export default {
     height: 500px;
     width: 400px;
 
+}
+
+.rotate-icon {
+  transform: rotate(90deg); /* Apply rotation to the icon */
 }
 
 .card {

@@ -34,7 +34,7 @@
       logout() {
         sessionStorage.removeItem('user')
         console.log("logout done")
-        alert("logout success")
+        //alert("logout success")
         this.isAuthenticated = false
         window.location.href = "/#/";
       },

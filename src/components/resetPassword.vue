@@ -67,7 +67,7 @@ export default (
 
         console.log('password object', JSON.stringify(this.password))
         this.$axios
-          .post("http://52.22.24.58:8082/api/password/reset",this.password)
+          .post("http://localhost:8082/api/password/reset", this.password)
           .then((res) => {
             if (res.status == 200) {
 
@@ -83,7 +83,7 @@ export default (
               }
 
               else {
-                alert('Password Changed')
+                alert('Password is Changed successfully')
                 window.location.href = "/"
               }
             }
@@ -111,4 +111,3 @@ export default (
   color: gray;
 }
 </style>
-  </style>

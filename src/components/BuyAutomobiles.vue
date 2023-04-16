@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content page-container" id="page-content">
+    <div class="page-content page-container" id="page-content" >
 
         <h1>Automobiles List</h1>
 
@@ -23,8 +23,10 @@
                             <p class="card-text" v-if="c.modelName" style="color: gray">Model: {{ c.modelName }}</p>
                             <p class="card-text" v-if="c.companyName" style="color: purple">Company: {{ c.companyName }}</p>
                             <p class="card-text" v-if="c.capacity" style="color:brown">Capacity: {{ c.capacity}} seater</p>
-                            <p class="card-text" v-if="c.daysUsed" style="color: red">{{ c.daysUsed }} Days used</p>
+                            <p class="card-text" v-if="c.daysUsed" style="color: rebeccapurple">{{ c.daysUsed }} Days used</p>
                             <p class="card-text" v-if="c.qtyAvailable" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
+                            <font-awesome-icon icon="phone" class="rotate-icon" style="color: green;"/> 
+                            <span style="margin-left:7px; color: darkslateblue;">{{c.phoneNumber}}</span>
                             <br />
                         </div>
                     </div>
@@ -62,6 +64,7 @@ export default {
                 capacity:"",
                 price: "",
                 size:"",
+                phoneNumber:"",
                 daysUsed: "",
                 qtyAvailable: "",
                 description: "",
@@ -75,7 +78,7 @@ export default {
         async automobile() {
             await this.$axios
                 .get(
-                    "http://52.22.24.58:8082/automobiles/automobiles"
+                    "http://localhost:8082/automobiles/automobiles"
                 )
 
                 .then((res) => {
@@ -125,9 +128,13 @@ export default {
     margin-left: 10px
 }
 
+.rotate-icon {
+  transform: rotate(90deg); /* Apply rotation to the icon */
+}
+
 .a1{
 
-height: 550px;
+height: 600px;
 width: 400px;
 }
 

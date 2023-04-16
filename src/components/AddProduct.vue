@@ -2,11 +2,11 @@
     <div>
         <h3>Sell your Products</h3>
         <br>
-        <form class="offset-lg-3 col-md-6">
+        <form class="col-md-12">
             <div class="form-group row">
-                <label for="Category" class="col-sm-5">Category</label>
-                <div class="col-sm-5">
-                    <select v-model="p" @change= 'render(p)'>
+                <label for="Category" class="col-sm-4">Category</label>
+                <div class="col-sm-6">
+                    <select v-model="p" @change= 'render(p)' class="form-select">
                         <option class="form-control">Electronics</option>
                         <option class="form-control">Clothing</option>
                         <option class="form-control">Automobiles</option>

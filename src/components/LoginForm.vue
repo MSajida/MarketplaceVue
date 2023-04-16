@@ -90,20 +90,11 @@ export default {
 
     methods: {
        async onSubmit(event) {
-if(this.login.username==""||this.login.password=="")
-{
-    
-}
-
-else
-{
-
-
             console.log('login', JSON.stringify(this.login));
             //alert(JSON.stringify(this.login));
 
             await this.$axios
-          .post("http://52.22.24.58:8082/login", this.login)
+          .post("http://localhost:8082/login", this.login)
           .then((res) => {
             if (res.status == 200) {
               this.data = res;
@@ -129,6 +120,7 @@ else
 
               else
               {
+                alert(this.data.data)
                 this.$router.push('/')
               }
 
@@ -142,7 +134,7 @@ else
             }
 
           });
-        }
+        
         },
     },
 };

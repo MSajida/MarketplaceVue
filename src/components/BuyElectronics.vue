@@ -18,9 +18,11 @@
                             <p class="card-text" v-if="c.price" style="color: blue">${{ c.price }}</p>
                             <p class="card-text" v-if="c.description" style="color: rebeccapurple">{{ c.description }}</p>
                             <p class="card-text" v-if="c.modelName" style="color: gray">Model: {{ c.modelName }}</p>
-                            <p class="card-text" v-if="c.daysUsed" style="color: red">{{ c.daysUsed }} Days used</p>
+                            <p class="card-text" v-if="c.daysUsed" style="color: rebeccapurple">{{ c.daysUsed }} Days used</p>
                             <p class="card-text" v-if="c.qtyAvailable" style="color: royalblue">{{ c.qtyAvailable }} Available</p>
                             <p class="card-text" v-if="c.dimensions" style="color: purple">{{ c.dimensions }} inches</p>
+                            <font-awesome-icon icon="phone" class="rotate-icon" style="color: green;"/> 
+                            <span style="margin-left:7px; color: darkslateblue;">{{c.phoneNumber}}</span>
                             <br />
                         </div>
                     </div>
@@ -99,6 +101,7 @@ export default {
                 daysUsed: "",
                 qtyAvailable: "",
                 description: "",
+                phoneNumber:"",
                 images: []
             }
 
@@ -109,7 +112,7 @@ export default {
         async electronics() {
             await this.$axios
                 .get(
-                    "http://52.22.24.58:8082/electronics/electronics"
+                    "http://localhost:8082/electronics/electronics"
                 )
 
                 .then((res) => {
@@ -160,9 +163,9 @@ export default {
     margin-left: 10px
 }
 
-.a1 {
+.a1 {   
 
-    height: 500px;
+    height: 600px;
     width: 400px;
 }
 
@@ -170,6 +173,10 @@ export default {
 .card {
     flex: 1;
     /* make the cards take up equal space */
+}
+
+.rotate-icon {
+  transform: rotate(90deg); /* Apply rotation to the icon */
 }
 
 </style>

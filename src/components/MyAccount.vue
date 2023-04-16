@@ -126,7 +126,7 @@ export default {
 
       this.$axios
         .get(
-          "http://52.22.24.58:8082/student/" + id
+          "http://localhost:8082/student/" + id
         )
         .then((res) => {
           if (res.status == 200) {
@@ -149,13 +149,14 @@ export default {
 
       let id = sessionStorage.getItem("user")
       this.$axios
-        .put("http://52.22.24.58:8082/updateProfile/" + id, this.student)
+        .put("http://localhost:8082/updateProfile/" + id, this.student)
 
         .then((res) => {
           if (res.status == 200) {
             this.data = res;
 
             console.log(this.data)
+            alert('Profile Updated Successfully')
             this.student = this.data.data
             this.read = true
 
@@ -178,7 +179,7 @@ export default {
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
 .background {
-  background-image: url("") !important;
+  
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;

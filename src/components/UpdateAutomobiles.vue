@@ -8,16 +8,17 @@
                         <b-card id="cardLogin" style="background-color: aliceblue;">
                             <b-form v-if="show" id="formRegister">
                                 <h2 class="text-center mb-3" style="color: #1f5a7c">Update product information</h2>
-                                <b-form-group id="input-group-1" label="Category" label-for="Category" style="color: gray">
+                                <span class="text-center mb-4 other-account" style="color:red">All the fields with * are mandatory </span>
+                                <b-form-group id="input-group-1" label="Category*" label-for="Category" style="color: gray">
                                     <b-form-input id="category" class="input" v-model="this.category" type="text"
                                         placeholder="Category" readonly></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label="Sub Category" label-for="Sub Category"
+                                <b-form-group id="input-group-1" label="Sub Category*" label-for="Sub Category"
                                     style="color: gray">
                                     <b-form-input id="subcategory" class="input" v-model="Automobiles.subcategory"
                                         type="text" placeholder="Subcategory" required></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label="Product Name" label-for="productName"
+                                <b-form-group id="input-group-1" label="Product Name*" label-for="productName"
                                     style="color: gray">
                                     <b-form-input id="productName" class="input" v-model="Automobiles.productName"
                                         type="text" placeholder="ProductName" required></b-form-input>
@@ -40,16 +41,16 @@
                                 </b-form-group>
                                 <b-form-group id="input-group-1" label-for="noOFDaysUsed" label="No of Days Used"
                                     style="color: gray">
-                                    <b-form-input id="noOFDaysUsed" class="input" v-model="Automobiles.daysUsed" type="text"
+                                    <b-form-input id="noOFDaysUsed" class="input" v-model="Automobiles.daysUsed" type="number" min="0"
                                         placeholder="Days Used"></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label-for="qtnAvailable" label="Quantity Available"
+                                <b-form-group id="input-group-1" label-for="qtnAvailable" label="Quantity Available*"
                                     style="color: gray">
                                     <b-form-input id="qtnAvailable" class="input" v-model="Automobiles.qtyAvailable"
                                         type="number" placeholder="Qty Available" min="1" required></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label-for="price" label="Price" style="color: gray">
-                                    <b-form-input id="price" class="input" v-model="Automobiles.price" type="text"
+                                <b-form-group id="input-group-1" label-for="price" label="Price*" style="color: gray">
+                                    <b-form-input id="price" class="input" v-model="Automobiles.price" type="number" min="0"
                                         placeholder="Price" required></b-form-input>
                                 </b-form-group>
                                 <b-form-group id="input-group-1" label="Product Description" label-for="description"
@@ -63,9 +64,6 @@
           /></b-button>
         </div> -->
                                 <br>
-
-
-
                             </b-form>
                         </b-card>
                         <br>
@@ -78,7 +76,7 @@
                         <b-card id="cardLogin" style="background-color: aliceblue;">
                             <h6 class="text-center mb-3" style="color: #1f5a7c">Status and Attachments</h6>
                             <div class="form-group row ">
-                                <label for="Category" class="col-sm-5" style="color: gray">Status</label>
+                                <label for="Category" class="col-sm-5" style="color: gray">Status*</label>
                                 <div class="col-sm-5">
                                     <select style="width: 190px" v-model="Automobiles.status" class="form-control">
                                         <option class="">Available</option>
@@ -99,7 +97,7 @@
                 </b-col>
             </b-row>
         </b-container>
-        <b-button variant="primary" type="submit" @click="UpdateProduct"> Update </b-button>
+        <b-button variant="primary" type="submit" @click="UpdateProduct" :disabled="isDisabled"> Update </b-button>
 
     </div>
 </template>
@@ -139,6 +137,13 @@ export default ({
 
         });
     },
+    computed:
+    {
+       isDisabled()
+       {
+        return this.Automobiles.subcategory ===''|| this.Automobiles.productName ==='' || this.Automobiles.price==='' || this.Automobiles.qtyAvailable==='';
+       }
+    },
     methods: {
         onFileSelected(event) {
             this.image = event.target.files;
@@ -172,7 +177,7 @@ export default ({
 
             this.Automobiles.id= this.productId;
             this.$axios
-            .post("http://52.22.24.58:8082/automobiles/updateProductImages/"+this.Automobiles.id, this.formdata)
+            .post("http://localhost:8082/automobiles/updateProductImages/"+this.Automobiles.id, this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
@@ -199,7 +204,7 @@ export default ({
         UpdateProduct(Electronics) {
             this.Automobiles.id= this.productId;
             this.$axios
-            .put("http://52.22.24.58:8082/automobiles/updateAutomobile",this.Automobiles)
+            .put("http://localhost:8082/automobiles/updateAutomobile",this.Automobiles)
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
@@ -207,7 +212,6 @@ export default ({
                         console.log(this.data)
                         this.Automobiles = this.data.data
                         this.category= 'Automobiles'
-                       // alert("Successfully updated the product");
                        // window.location.href="/#/Ads"
                        this.$router.push("/Ads")
 
@@ -224,7 +228,7 @@ export default ({
             
             this.$axios
                 .get(
-                    "http://52.22.24.58:8082/automobiles/product/" + id
+                    "http://localhost:8082/automobiles/product/" + id
                 )
                 .then((res) => {
                     if (res.status == 200) {
@@ -256,7 +260,7 @@ export default ({
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
 .background {
-    background-image: url("") !important;
+    
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

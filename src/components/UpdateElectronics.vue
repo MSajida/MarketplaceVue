@@ -8,16 +8,17 @@
                         <b-card id="cardLogin" style="background-color: aliceblue;">
                             <b-form v-if="show" id="formRegister">
                                 <h2 class="text-center mb-3" style="color: #1f5a7c">Update product information</h2>
-                                <b-form-group id="input-group-1" label="Category" label-for="Category" style="color: gray">
+                                <span class="text-center mb-4 other-account" style="color:red">All the fields with * are mandatory </span>
+                                <b-form-group id="input-group-1" label="Category*" label-for="Category" style="color: gray">
                                     <b-form-input id="category" class="input" v-model="this.category" type="text"
                                         placeholder="Category" readonly></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label="Sub Category" label-for="Sub Category"
+                                <b-form-group id="input-group-1" label="Sub Category*" label-for="Sub Category"
                                     style="color: gray">
                                     <b-form-input id="subcategory" class="input" v-model="Electronics.subcategory"
                                         type="text" placeholder="Subcategory" required></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label="Product Name" label-for="productName"
+                                <b-form-group id="input-group-1" label="Product Name*" label-for="productName"
                                     style="color: gray">
                                     <b-form-input id="productName" class="input" v-model="Electronics.productName"
                                         type="text" placeholder="ProductName" required></b-form-input>
@@ -35,16 +36,16 @@
                                 </b-form-group>
                                 <b-form-group id="input-group-1" label-for="noOFDaysUsed" label="No of Days Used"
                                     style="color: gray">
-                                    <b-form-input id="noOFDaysUsed" class="input" v-model="Electronics.daysUsed" type="text"
+                                    <b-form-input id="noOFDaysUsed" class="input" v-model="Electronics.daysUsed" type="number" min="0"
                                         placeholder="Days Used"></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label-for="qtnAvailable" label="Quantity Available"
+                                <b-form-group id="input-group-1" label-for="qtnAvailable" label="Quantity Available*"
                                     style="color: gray">
                                     <b-form-input id="qtnAvailable" class="input" v-model="Electronics.qtyAvailable"
                                         type="number" placeholder="Qty Available" min="1" required></b-form-input>
                                 </b-form-group>
-                                <b-form-group id="input-group-1" label-for="price" label="Price" style="color: gray">
-                                    <b-form-input id="price" class="input" v-model="Electronics.price" type="text"
+                                <b-form-group id="input-group-1" label-for="price" label="Price*" style="color: gray">
+                                    <b-form-input id="price" class="input" v-model="Electronics.price" type="number" min="0"
                                         placeholder="Price" required></b-form-input>
                                 </b-form-group>
                                 <b-form-group id="input-group-1" label="Product Description" label-for="description"
@@ -73,7 +74,7 @@
                         <b-card id="cardLogin" style="background-color: aliceblue;">
                             <h6 class="text-center mb-3" style="color: #1f5a7c">Status and Attachments</h6>
                             <div class="form-group row ">
-                                <label for="Category" class="col-sm-5" style="color: gray">Status</label>
+                                <label for="Category" class="col-sm-5" style="color: gray">Status*</label>
                                 <div class="col-sm-5">
                                     <select style="width: 190px" v-model="Electronics.status" class="form-control">
                                         <option class="">Available</option>
@@ -94,7 +95,7 @@
                 </b-col>
             </b-row>
         </b-container>
-        <b-button variant="primary" type="submit" @click="UpdateProduct"> Update </b-button>
+        <b-button variant="primary" type="submit" @click="UpdateProduct" :disabled="isDisabled"> Update </b-button>
 
     </div>
 </template>
@@ -136,6 +137,14 @@ export default ({
 
         });
     },
+
+    computed:
+    {
+       isDisabled()
+       {
+        return this.Electronics.subcategory ===''|| this.Electronics.productName ==='' || this.Electronics.price==='' || this.Electronics.qtyAvailable==='';
+       }
+    },
     methods: {
 
         onFileSelected(event) {
@@ -170,7 +179,7 @@ export default ({
 
             this.Electronics.id = this.productId;
             this.$axios
-                .post("http://52.22.24.58:8082/electronics/updateProductImages/" + this.Electronics.id, this.formdata)
+                .post("http://localhost:8082/electronics/updateProductImages/" + this.Electronics.id, this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
@@ -196,7 +205,7 @@ export default ({
         UpdateProduct(Electronics) {
             this.Electronics.id = this.productId;
             this.$axios
-                .put("http://52.22.24.58:8082/electronics/updateElec", this.Electronics)
+                .put("http://localhost:8082/electronics/updateElec", this.Electronics)
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
@@ -221,7 +230,7 @@ export default ({
 
             this.$axios
                 .get(
-                    "http://52.22.24.58:8082/electronics/product/" + id
+                    "http://localhost:8082/electronics/product/" + id
                 )
                 .then((res) => {
                     if (res.status == 200) {
@@ -252,7 +261,7 @@ export default ({
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
 .background {
-    background-image: url("") !important;
+    
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
