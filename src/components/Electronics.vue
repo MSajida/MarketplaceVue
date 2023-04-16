@@ -157,7 +157,7 @@ export default ({
             console.log(this.formdata);
             this.formdata.append('electronics', JSON.stringify(this.Electronics));
             this.$axios
-                .post("http://localhost:8082/electronics/addProduct", this.formdata)
+                .post("http://52.22.24.58:8082/electronics/addProduct", this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         console.log("success")

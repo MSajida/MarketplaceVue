@@ -177,7 +177,7 @@ export default ({
 
             this.Automobiles.id= this.productId;
             this.$axios
-            .post("http://localhost:8082/automobiles/updateProductImages/"+this.Automobiles.id, this.formdata)
+            .post("http://52.22.24.58:8082/automobiles/updateProductImages/"+this.Automobiles.id, this.formdata)
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
@@ -204,7 +204,7 @@ export default ({
         UpdateProduct(Electronics) {
             this.Automobiles.id= this.productId;
             this.$axios
-            .put("http://localhost:8082/automobiles/updateAutomobile",this.Automobiles)
+            .put("http://52.22.24.58:8082/automobiles/updateAutomobile",this.Automobiles)
                 .then((res) => {
                     if (res.status == 200) {
                         this.data = res;
@@ -228,7 +228,7 @@ export default ({
             
             this.$axios
                 .get(
-                    "http://localhost:8082/automobiles/product/" + id
+                    "http://52.22.24.58:8082/automobiles/product/" + id
                 )
                 .then((res) => {
                     if (res.status == 200) {

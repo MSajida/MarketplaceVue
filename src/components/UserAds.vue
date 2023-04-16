@@ -62,7 +62,7 @@ export default {
             console.log("inside delete" , id, category)
             await this.$axios
                 .delete(
-                    "http://localhost:8082/"+category+"/delete/"+id
+                    "http://52.22.24.58:8082/"+category+"/delete/"+id
                 )
 
                 .then((res) => {
@@ -119,7 +119,7 @@ export default {
             console.log('id is', this.Electronics.studentId);
             await this.$axios
                 .get(
-                    "http://localhost:8082/ads/" + this.Electronics.studentId
+                    "http://52.22.24.58:8082/ads/" + this.Electronics.studentId
                 )
 
                 .then((res) => {

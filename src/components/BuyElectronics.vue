@@ -112,7 +112,7 @@ export default {
         async electronics() {
             await this.$axios
                 .get(
-                    "http://localhost:8082/electronics/electronics"
+                    "http://52.22.24.58:8082/electronics/electronics"
                 )
 
                 .then((res) => {

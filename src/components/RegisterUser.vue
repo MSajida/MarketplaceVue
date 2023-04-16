@@ -173,7 +173,7 @@ export default {
       //alert(JSON.stringify(this.login));
 
       await this.$axios
-        .post("http://localhost:8082/register", this.student)
+        .post("http://52.22.24.58:8082/register", this.student)
         .then((res) => {
           if (res.status == 200) {
             this.data = res;
